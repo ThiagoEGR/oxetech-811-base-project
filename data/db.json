@@ -33,7 +33,7 @@
       "requesterId": "user_ana",
       "assignedToId": "user_carla",
       "createdAt": "2026-05-01T10:00:00.000Z",
-      "updatedAt": "2026-05-31T19:50:34.785Z"
+      "updatedAt": "2026-05-31T21:28:27.003Z"
     },
     {
       "id": "ticket_002",
@@ -60,26 +60,15 @@
       "updatedAt": "2026-05-04T09:00:00.000Z"
     },
     {
-      "id": "ticket_1780255476087_3410",
+      "id": "ticket_1780262906955_9739",
       "title": "Nao consigo enviar atividade",
       "description": "O sistema apresenta erro ao anexar o arquivo da atividade.",
       "category": "sistemas",
       "requesterId": "user_ana",
       "status": "open",
       "priority": "high",
-      "createdAt": "2026-05-31T19:24:36.087Z",
-      "updatedAt": "2026-05-31T19:24:36.087Z"
-    },
-    {
-      "id": "ticket_1780257034721_8296",
-      "title": "Nao consigo enviar atividade",
-      "description": "O sistema apresenta erro ao anexar o arquivo da atividade.",
-      "category": "sistemas",
-      "requesterId": "user_ana",
-      "status": "open",
-      "priority": "high",
-      "createdAt": "2026-05-31T19:50:34.721Z",
-      "updatedAt": "2026-05-31T19:50:34.721Z"
+      "createdAt": "2026-05-31T21:28:26.955Z",
+      "updatedAt": "2026-05-31T21:28:26.955Z"
     }
   ],
   "comments": [
@@ -98,32 +87,25 @@
       "createdAt": "2026-05-04T09:00:00.000Z"
     },
     {
-      "id": "comment_1780255625443_2850",
+      "id": "comment_1780260282709_4033",
       "ticketId": "ticket_001",
       "authorId": "user_carla",
       "message": "Chamado em atendimento.",
-      "createdAt": "2026-05-31T19:27:05.443Z"
+      "createdAt": "2026-05-31T20:44:42.709Z"
     },
     {
-      "id": "comment_1780255749446_8036",
-      "ticketId": "ticket_001",
-      "authorId": "user_carla",
-      "message": "Solicitei mais informacoes ao usuario.",
-      "createdAt": "2026-05-31T19:29:09.446Z"
-    },
-    {
-      "id": "comment_1780257034750_1567",
+      "id": "comment_1780262906979_1778",
       "ticketId": "ticket_001",
       "authorId": "user_carla",
       "message": "Chamado em atendimento.",
-      "createdAt": "2026-05-31T19:50:34.750Z"
+      "createdAt": "2026-05-31T21:28:26.979Z"
     },
     {
-      "id": "comment_1780257034785_9403",
+      "id": "comment_1780262907003_4031",
       "ticketId": "ticket_001",
       "authorId": "user_carla",
       "message": "Solicitei mais informacoes ao usuario.",
-      "createdAt": "2026-05-31T19:50:34.785Z"
+      "createdAt": "2026-05-31T21:28:27.003Z"
     }
   ]
 }
