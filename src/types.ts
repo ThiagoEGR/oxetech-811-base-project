@@ -1,6 +1,6 @@
 export type TicketStatus = "open" | "in_progress" | "resolved" | "closed";
 
-export type TicketPriority = "low" | "medium" | "high" | "urgent" | undefined;
+export type TicketPriority = "low" | "medium" | "high" | "urgent";
 
 export type UserRole = "student" | "teacher" | "support";
 

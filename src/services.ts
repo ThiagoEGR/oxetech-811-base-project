@@ -1,63 +1,65 @@
 import type { TicketPriority, TicketCategory } from "./types";
 
 interface TicketPriorityPolice {
-    calculatePriority(
-        category: TicketCategory,
-        description: string
-    ): TicketPriority | undefined;
+    isAplicable(category: TicketCategory, description: string): boolean;
+    calculatePriority(): TicketPriority;
+
 }
 
-class urgentTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
-        if (category === "infra" || description.toLowerCase().includes("urgente")) {
-            return "urgent";
-        }
-        return undefined;
+class UrgentTicketPolice implements TicketPriorityPolice {
+    isAplicable(category: TicketCategory, description: string): boolean {
+        return category === "infra" || description.toLowerCase().includes("urgente");
+    }
+
+    calculatePriority(): TicketPriority {
+        return "urgent";
     }
 }
 
-class highTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
-        if (category === "sistemas" || description.length > 220) {
-            return "high";
-        }
-        return undefined;
+class HighTicketPolice implements TicketPriorityPolice {
+    isAplicable(category: TicketCategory, description: string): boolean {
+        return category === "sistemas" || description.length > 220;
+    }
+
+    calculatePriority(): TicketPriority {
+        return "high";
     }
 }
 
-class mediumTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
-        if (category === "academico") {
-            return "medium";
-        }
-        return undefined;
+class MediumTicketPolice implements TicketPriorityPolice {
+    isAplicable(category: TicketCategory, description: string): boolean {
+        return category === "academico";
+    }
+
+    calculatePriority(): TicketPriority {
+        return "medium";
     }
 }
 
-class lowTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
-        if (description.length < 20) {
-            return "low";
-        }
-        return undefined;
+class LowTicketPolice implements TicketPriorityPolice {
+    isAplicable(category: TicketCategory, description: string): boolean {
+        return true;
+    }
+
+    calculatePriority(): TicketPriority {
+        return "low";
     }
 }
 
-export function calculateTicketPriority(category: TicketCategory, description: string): TicketPriority | undefined {
+
+export function calculateTicketPriority(category: TicketCategory, description: string): TicketPriority {
     const policies = [
-        new urgentTicketPolice(),
-        new highTicketPolice(),
-        new mediumTicketPolice(),
-        new lowTicketPolice(),
+        new UrgentTicketPolice(),
+        new HighTicketPolice(),
+        new MediumTicketPolice(),
+        new LowTicketPolice(),
     ];
 
-    for (const policy of policies) {
-        const priority = policy.calculatePriority(category, description);
+    const policy = policies.find((policy) =>
+        policy.isAplicable(category, description)
+    );
 
-        if (priority !== undefined) {
-            return priority;
-        }
-    }
+    return policy!.calculatePriority();
 
 }
 
