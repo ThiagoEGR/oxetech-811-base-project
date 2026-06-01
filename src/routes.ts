@@ -1,7 +1,7 @@
 import { Router } from "express";
 import fs from "node:fs";
 import path from "node:path";
-import { calculateTicketPriority } from "./services";
+import { calculateTicketPriority, generateId } from "./services";
 import type { Database, Ticket, TicketStatus } from "./types";
 
 const router = Router();
@@ -15,10 +15,6 @@ function readDatabase(): Database {
 
 function writeDatabase(database: Database) {
   fs.writeFileSync(databasePath, JSON.stringify(database, null, 2));
-}
-
-function generateId(prefix: string) {
-  return `${prefix}_${Date.now()}_${Math.floor(Math.random() * 10000)}`;
 }
 
 router.get("/health", (_request, response) => {

@@ -43,7 +43,6 @@ class lowTicketPolice implements TicketPriorityPolice {
     }
 }
 
-
 export function calculateTicketPriority(category: TicketCategory, description: string): TicketPriority | undefined {
     const policies = [
         new urgentTicketPolice(),
@@ -60,6 +59,10 @@ export function calculateTicketPriority(category: TicketCategory, description: s
         }
     }
 
+}
+
+export function generateId(prefix: string) {
+    return `${prefix}_${Date.now()}_${Math.floor(Math.random() * 10000)}`;
 }
 
 

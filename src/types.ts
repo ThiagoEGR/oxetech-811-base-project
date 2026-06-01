@@ -4,7 +4,7 @@ export type TicketPriority = "low" | "medium" | "high" | "urgent" | undefined;
 
 export type UserRole = "student" | "teacher" | "support";
 
-export type Category = "infra" | "sistemas" | "academico";
+export type TicketCategory = "academico" | "infra" | "sistemas";
 
 export interface User {
   id: string;
@@ -26,7 +26,7 @@ export interface Ticket {
   id: string;
   title: string;
   description: string;
-  category: Category;
+  category: TicketCategory;
   status: TicketStatus;
   priority: TicketPriority;
   requesterId: string;
