@@ -1,14 +1,14 @@
-import type { TicketPriority, Category } from "./types";
+import type { TicketPriority, TicketCategory } from "./types";
 
 interface TicketPriorityPolice {
     calculatePriority(
-        category: Category,
+        category: TicketCategory,
         description: string
     ): TicketPriority | undefined;
 }
 
 class urgentTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: Category, description: string): TicketPriority | undefined {
+    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
         if (category === "infra" || description.toLowerCase().includes("urgente")) {
             return "urgent";
         }
@@ -17,7 +17,7 @@ class urgentTicketPolice implements TicketPriorityPolice {
 }
 
 class highTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: Category, description: string): TicketPriority | undefined {
+    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
         if (category === "sistemas" || description.length > 220) {
             return "high";
         }
@@ -26,7 +26,7 @@ class highTicketPolice implements TicketPriorityPolice {
 }
 
 class mediumTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: Category, description: string): TicketPriority | undefined {
+    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
         if (category === "academico") {
             return "medium";
         }
@@ -35,7 +35,7 @@ class mediumTicketPolice implements TicketPriorityPolice {
 }
 
 class lowTicketPolice implements TicketPriorityPolice {
-    calculatePriority(category: Category, description: string): TicketPriority | undefined {
+    calculatePriority(category: TicketCategory, description: string): TicketPriority | undefined {
         if (description.length < 20) {
             return "low";
         }
@@ -44,7 +44,7 @@ class lowTicketPolice implements TicketPriorityPolice {
 }
 
 
-export function calculateTicketPriority(category: Category, description: string): TicketPriority | undefined {
+export function calculateTicketPriority(category: TicketCategory, description: string): TicketPriority | undefined {
     const policies = [
         new urgentTicketPolice(),
         new highTicketPolice(),
