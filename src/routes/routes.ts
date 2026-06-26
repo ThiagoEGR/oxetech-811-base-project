@@ -1,8 +1,8 @@
 import { Router } from "express";
 import fs from "node:fs";
 import path from "node:path";
-import { calculateTicketPriority, generateId } from "./services";
-import type { Database, Ticket, TicketStatus } from "./types";
+import { calculateTicketPriority, generateId } from "../services";
+import type { Database, Ticket, TicketStatus } from "../types";
 
 const router = Router();
 const dataFile = process.env.DATA_FILE || "data/db.json";
@@ -145,6 +145,7 @@ router.post("/tickets", (request, response) => {
 
   response.status(201).json(ticket);
 });
+
 
 router.patch("/tickets/:id/status", (request, response) => {
   const database = readDatabase();
