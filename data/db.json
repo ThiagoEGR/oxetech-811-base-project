@@ -33,7 +33,7 @@
       "requesterId": "user_ana",
       "assignedToId": "user_carla",
       "createdAt": "2026-05-01T10:00:00.000Z",
-      "updatedAt": "2026-06-01T16:03:38.433Z"
+      "updatedAt": "2026-06-27T00:29:33.152Z"
     },
     {
       "id": "ticket_002",
@@ -80,6 +80,50 @@
       "priority": "high",
       "createdAt": "2026-06-01T16:03:38.375Z",
       "updatedAt": "2026-06-01T16:03:38.375Z"
+    },
+    {
+      "id": "ticket_1782517467246_8303",
+      "title": "Nao consigo enviar atividade",
+      "description": "O sistema apresenta erro ao anexar o arquivo da atividade.",
+      "category": "sistemas",
+      "requesterId": "user_ana",
+      "status": "open",
+      "priority": "high",
+      "createdAt": "2026-06-26T23:44:27.246Z",
+      "updatedAt": "2026-06-26T23:44:27.246Z"
+    },
+    {
+      "id": "ticket_1782517873387_1028",
+      "title": "Nao consigo enviar atividade",
+      "description": "O sistema apresenta erro ao anexar o arquivo da atividade.",
+      "category": "sistemas",
+      "requesterId": "user_ana",
+      "status": "open",
+      "priority": "high",
+      "createdAt": "2026-06-26T23:51:13.387Z",
+      "updatedAt": "2026-06-26T23:51:13.387Z"
+    },
+    {
+      "id": "ticket_1782517964995_2275",
+      "title": "Nao consigo enviar atividade",
+      "description": "O sistema apresenta erro ao anexar o arquivo da atividade.",
+      "category": "sistemas",
+      "requesterId": "user_ana",
+      "status": "open",
+      "priority": "high",
+      "createdAt": "2026-06-26T23:52:44.995Z",
+      "updatedAt": "2026-06-26T23:52:44.995Z"
+    },
+    {
+      "id": "ticket_1782520173106_5542",
+      "title": "Nao consigo enviar atividade",
+      "description": "O sistema apresenta erro ao anexar o arquivo da atividade.",
+      "category": "sistemas",
+      "requesterId": "user_ana",
+      "status": "open",
+      "priority": "high",
+      "createdAt": "2026-06-27T00:29:33.106Z",
+      "updatedAt": "2026-06-27T00:29:33.106Z"
     }
   ],
   "comments": [
@@ -124,6 +168,62 @@
       "authorId": "user_carla",
       "message": "Solicitei mais informacoes ao usuario.",
       "createdAt": "2026-06-01T16:03:38.433Z"
+    },
+    {
+      "id": "comment_1782517467272_5160",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Chamado em atendimento.",
+      "createdAt": "2026-06-26T23:44:27.272Z"
+    },
+    {
+      "id": "comment_1782517467296_2945",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Solicitei mais informacoes ao usuario.",
+      "createdAt": "2026-06-26T23:44:27.296Z"
+    },
+    {
+      "id": "comment_1782517873409_8730",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Chamado em atendimento.",
+      "createdAt": "2026-06-26T23:51:13.409Z"
+    },
+    {
+      "id": "comment_1782517873432_8467",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Solicitei mais informacoes ao usuario.",
+      "createdAt": "2026-06-26T23:51:13.432Z"
+    },
+    {
+      "id": "comment_1782517965019_9559",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Chamado em atendimento.",
+      "createdAt": "2026-06-26T23:52:45.019Z"
+    },
+    {
+      "id": "comment_1782517965043_1748",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Solicitei mais informacoes ao usuario.",
+      "createdAt": "2026-06-26T23:52:45.043Z"
+    },
+    {
+      "id": "comment_1782520173128_5315",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Chamado em atendimento.",
+      "createdAt": "2026-06-27T00:29:33.128Z"
+    },
+    {
+      "id": "comment_1782520173152_265",
+      "ticketId": "ticket_001",
+      "authorId": "user_carla",
+      "message": "Solicitei mais informacoes ao usuario.",
+      "createdAt": "2026-06-27T00:29:33.152Z"
     }
   ]
 }
