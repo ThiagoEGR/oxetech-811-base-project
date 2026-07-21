@@ -19,9 +19,9 @@ O objetivo nao e reconstruir o sistema do zero. O objetivo e entender a aplicaca
 ## Funcionalidades
 
 - Criar chamados
-- Listar chamados
+- Listar chamados 
 - Buscar chamado por ID
-- Alterar status
+- Alterar status 
 - Adicionar comentários
 
 ## Como rodar

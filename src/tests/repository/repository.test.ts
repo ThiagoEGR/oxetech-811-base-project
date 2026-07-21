@@ -3,8 +3,6 @@ import { DatabaseManager } from "../../repository";
 
 describe("Repository Tests", () => {
     test("should read the database correctly", () => {
-        // arrange
-
         // act
         const database = DatabaseManager.getInstance().readDatabase();
         const user = database.users.find(user => user.id === "user_carla");
