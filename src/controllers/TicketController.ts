@@ -1,6 +1,7 @@
 import type { TicketStatus } from "../types";
 import { DatabaseManager, } from "../repository";
-import { TicketService } from "../services/TicketService";
+import { postTicket, postTicketComment, patchTicketStatus } from "../services/ticket-command";
+import { getTickets, getSummary, getTicketById } from "../services/ticket-query";
 import { ERROR_MESSAGES } from "../constante.error";
 
 
@@ -15,16 +16,16 @@ export class TicketController {
     }
 
     static getAllTickets(request: any, response: any) {
-        const result = TicketService.getTickets(request.query.status, request.query.category, request.query.search);
+        const result = getTickets(request.query.status, request.query.category, request.query.search);
         response.json(result);
     }
 
     static getSummary(request: any, response: any) {
-        response.json(TicketService.getSummary());
+        response.json(getSummary());
     }
 
     static getTicketById(request: any, response: any) {
-        const ticket = TicketService.getTicketById(request.params.id);
+        const ticket = getTicketById(request.params.id);
 
         if (!ticket) {
             response.status(404).json({ "error": ERROR_MESSAGES.TICKET_NOT_FOUND, "id": request.params.id });
@@ -37,7 +38,7 @@ export class TicketController {
     static postTicket(request: any, response: any) {
         const body = request.body;
 
-        const ticket = TicketService.postTicket({
+        const ticket = postTicket({
             title: body.title,
             description: body.description,
             category: body.category,
@@ -60,7 +61,7 @@ export class TicketController {
         const comment = request.body.comment;
         const authorId = request.body.authorId;
 
-        const result = TicketService.patchTicketStatus(ticketId, newStatus, comment, authorId);
+        const result = patchTicketStatus(ticketId, newStatus, comment, authorId);
 
         if (result.error === ERROR_MESSAGES.TICKET_NOT_FOUND) {
             return response.status(404).json({ error: ERROR_MESSAGES.TICKET_NOT_FOUND });
@@ -74,7 +75,7 @@ export class TicketController {
         const authorId = request.body.authorId;
         const message = request.body.message;
 
-        const result = TicketService.postTicketComment(ticketId, authorId, message);
+        const result = postTicketComment(ticketId, authorId, message);
 
 
         if (result.error === ERROR_MESSAGES.TICKET_NOT_FOUND) {
