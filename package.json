@@ -12,7 +12,7 @@
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "seed": "tsx src/seed.ts",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "cors": "^2.8.6",

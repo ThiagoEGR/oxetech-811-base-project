@@ -3,16 +3,24 @@ import { TicketCategory, TicketStatus, User, TicketComment } from "../types";
 import { Ticket } from "./Ticket";
 import { TicketFactory } from "./TicketFactory";
 import { ERROR_MESSAGES } from "../constante.error";
+import { postTicketComment } from "./ticket-command";
+import { addTicketUsers } from "./ticket-details";
 
 
 export class TicketService {
-    static getAllTickets(status?: TicketStatus, category?: TicketCategory, search?: string) {
+    static getTickets(status?: TicketStatus, category?: TicketCategory, search?: string) {
         const database = DatabaseManager.getInstance().readDatabase();
         let tickets = database.tickets;
 
         tickets = this.filterTickets(tickets, status, category, search);
-        const result = this.addTicketDetails(tickets, database.users, database.comments);
-        return result;
+        const ticketsWithUsers = tickets.map((ticket) => addTicketUsers(ticket, database.users));
+
+        return ticketsWithUsers.map((tickets) => ({
+            ...tickets,
+            commentsCount: database.comments.filter(
+                (comment) => comment.ticketId === tickets.id
+            ).length,
+        }));
     }
 
     private static filterTickets(tickets: Ticket[], status?: TicketStatus, category?: TicketCategory, search?: string) {
@@ -87,8 +95,8 @@ export class TicketService {
             return null;
         }
 
-        const requester = database.users.find((user) => user.id === ticket.requesterId);
-        const assigned = database.users.find((user) => user.id === ticket.assignedToId);
+
+        const ticketsWithUsers = addTicketUsers(ticket, database.users);
         const comments = database.comments
             .filter((comment) => comment.ticketId === ticket.id)
             .map((comment) => ({
@@ -97,9 +105,7 @@ export class TicketService {
             }));
 
         return {
-            ...ticket,
-            requester,
-            assigned,
+            ...ticketsWithUsers,
             comments,
         };
     }
@@ -169,6 +175,9 @@ export class TicketService {
     }
 
     static postTicketComment(ticketId: string, authorId: string, message: string) {
+
+        return postTicketComment(ticketId, authorId, message);
+        /*
         const database = DatabaseManager.getInstance().readDatabase();
         const ticket = database.tickets.find((item) => item.id === ticketId);
 
@@ -189,5 +198,6 @@ export class TicketService {
         DatabaseManager.getInstance().writeDatabase(database);
 
         return { success: true, comment };
+        */
     }
 }

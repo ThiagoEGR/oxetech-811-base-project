@@ -15,7 +15,7 @@ export class TicketController {
     }
 
     static getAllTickets(request: any, response: any) {
-        const result = TicketService.getAllTickets(request.query.status, request.query.category, request.query.search);
+        const result = TicketService.getTickets(request.query.status, request.query.category, request.query.search);
         response.json(result);
     }
 
