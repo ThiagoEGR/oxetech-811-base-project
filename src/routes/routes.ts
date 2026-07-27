@@ -3,6 +3,7 @@ import { TicketController } from "../controllers/TicketController";
 import { validateCreateTicket } from "../middleware/validateCreateTicket";
 import { patchTicketStatusMiddleware } from "../middleware/patchTicketStatus";
 import { validateCreateComment } from "../middleware/validateCreateComment";
+import { getHealth, getAllUsers, getAllTickets, getSummary, getTicketById } from "../controllers/ticket-query";
 
 const router = Router();
 
@@ -18,7 +19,7 @@ const router = Router();
  *       200:
  *         description: API is running successfully.
  */
-router.get("/health", TicketController.getHealth);
+router.get("/health", getHealth);
 
 /**
  * @openapi
@@ -32,7 +33,7 @@ router.get("/health", TicketController.getHealth);
  *       200:
  *         description: A list of users.
  */
-router.get("/users", TicketController.getAllUsers);
+router.get("/users", getAllUsers);
 
 /**
  * @openapi
@@ -67,7 +68,7 @@ router.get("/users", TicketController.getAllUsers);
  *       200:
  *         description: A list of tickets.
  */
-router.get("/tickets", TicketController.getAllTickets);
+router.get("/tickets", getAllTickets);
 
 /**
  * @openapi
@@ -81,7 +82,7 @@ router.get("/tickets", TicketController.getAllTickets);
  *       200:
  *         description: A summary of tickets.
  */
-router.get("/tickets/summary", TicketController.getSummary);
+router.get("/tickets/summary", getSummary);
 
 /**
  * @openapi
@@ -104,7 +105,7 @@ router.get("/tickets/summary", TicketController.getSummary);
  *       404:
  *         description: Ticket not found.
  */
-router.get("/tickets/:id", TicketController.getTicketById);
+router.get("/tickets/:id", getTicketById);
 
 /** 
  * @openapi
