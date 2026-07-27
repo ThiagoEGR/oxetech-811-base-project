@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { TicketController } from "../controllers/TicketController";
 import { validateCreateTicket } from "../middleware/validateCreateTicket";
 import { patchTicketStatusMiddleware } from "../middleware/patchTicketStatus";
 import { validateCreateComment } from "../middleware/validateCreateComment";
 import { getHealth, getAllUsers, getAllTickets, getSummary, getTicketById } from "../controllers/ticket-query";
+import { postTicket, postTicketComment, patchTicketStatus } from "../controllers/ticket-command";
 
 const router = Router();
 
@@ -149,7 +149,7 @@ router.get("/tickets/:id", getTicketById);
  *       400:
  *         description: Bad request. Missing or invalid fields.
 */
-router.post("/tickets", validateCreateTicket, TicketController.postTicket);
+router.post("/tickets", validateCreateTicket, postTicket);
 
 /**
  * @openapi
@@ -190,7 +190,7 @@ router.post("/tickets", validateCreateTicket, TicketController.postTicket);
  *      404:
  *        description: Ticket not found.
  */
-router.patch("/tickets/:id/status", patchTicketStatusMiddleware, TicketController.patchTicketStatus);
+router.patch("/tickets/:id/status", patchTicketStatusMiddleware, patchTicketStatus);
 
 /**
  * @openapi
@@ -231,7 +231,7 @@ router.patch("/tickets/:id/status", patchTicketStatusMiddleware, TicketControlle
  *       404:
  *         description: Ticket not found.
  */
-router.post("/tickets/:id/comments", validateCreateComment, TicketController.postTicketComment);
+router.post("/tickets/:id/comments", validateCreateComment, postTicketComment);
 
 
 export default router;
