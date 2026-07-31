@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { validateCreateTicket } from "../middleware/validateCreateTicket";
-import { patchTicketStatusMiddleware } from "../middleware/patchTicketStatus";
+import { patchTicketStatusMiddleware } from "../middleware/ValidatepatchTicketStatus";
 import { validateCreateComment } from "../middleware/validateCreateComment";
 import { getHealth, getAllUsers, getAllTickets, getSummary, getTicketById } from "../controllers/ticket-query";
 import { postTicket, postTicketComment, patchTicketStatus } from "../controllers/ticket-command";
