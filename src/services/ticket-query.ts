@@ -63,6 +63,11 @@ export function getTicketById(ticketId: string) {
     };
 }
 
+export function getAllUsers() {
+    const database = DatabaseManager.getInstance().readDatabase();
+    return database.users.map(({ password, ...user }) => user);
+}
+
 export function getUser(userId: string) {
     const database = DatabaseManager.getInstance().readDatabase();
     const user = database.users.find((item) => item.id === userId);

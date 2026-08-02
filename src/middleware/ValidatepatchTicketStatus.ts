@@ -13,8 +13,24 @@ export function patchTicketStatusMiddleware(request: Request, response: Response
     }
 
     if (newStatus === closingStatus && !comment) {
-        return response.status(400).json({ error: ERROR_MESSAGES.COMMENT_REQUIRED_FOR_CLOSING });
+
+        const validation = validateComment(comment);
+        if (!validation.valid) {
+            return response.status(400).json({ error: validation.error, });
+        }
+    }
+    next();
+}
+
+export function validateComment(comment?: string) {
+    if (!comment?.trim()) {
+        return {
+            valid: false,
+            error: ERROR_MESSAGES.COMMENT_REQUIRED_FOR_CLOSING,
+        };
     }
 
-    next();
+    return {
+        valid: true,
+    };
 }

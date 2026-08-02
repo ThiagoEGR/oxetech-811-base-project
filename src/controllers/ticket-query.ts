@@ -7,8 +7,8 @@ export function getHealth(request: any, response: any) {
 }
 
 export function getAllUsers(request: any, response: any) {
-    const database = DatabaseManager.getInstance().readDatabase();
-    response.json(database.users);
+    const users = TicketQuery.getAllUsers();
+    response.json(users);
 }
 
 export function getAllTickets(request: any, response: any) {
