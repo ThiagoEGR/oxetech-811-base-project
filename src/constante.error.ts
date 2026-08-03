@@ -7,4 +7,6 @@ export const ERROR_MESSAGES = {
     COMMENT_AND_AUTHOR_REQUIRED_FOR_CLOSING: "Comentario e autor sao obrigatorios",
     INVALID_CATEGORY: "Categoria invalida",
     REQUIRED_FIELDS_MUST_BE_STRING: "Campos obrigatorios devem ser do tipo string",
+    INVALID_CREDENTIALS: "Usuario ou senha invalido",
+    FORBIDDEN: "Acesso negado",
 };

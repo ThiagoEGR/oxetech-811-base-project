@@ -1,4 +1,3 @@
-import { DatabaseManager } from "../repository";
 import * as TicketQuery from "../services/ticket-query";
 import { ERROR_MESSAGES } from "../constante.error";
 
