@@ -4,6 +4,8 @@ import { patchTicketStatusMiddleware } from "../middleware/ValidatepatchTicketSt
 import { validateCreateComment } from "../middleware/validateCreateComment";
 import { getHealth, getAllUsers, getAllTickets, getSummary, getTicketById } from "../controllers/ticket-query";
 import { postTicket, postTicketComment, patchTicketStatus } from "../controllers/ticket-command";
+import { authenticate } from "../middleware/authenticate";
+import { authorizeRoles } from "../middleware/authorize-roles";
 
 const router = Router();
 
@@ -33,7 +35,7 @@ router.get("/health", getHealth);
  *       200:
  *         description: A list of users.
  */
-router.get("/users", getAllUsers);
+router.get("/users", authenticate, getAllUsers);
 
 /**
  * @openapi
@@ -149,7 +151,7 @@ router.get("/tickets/:id", getTicketById);
  *       400:
  *         description: Bad request. Missing or invalid fields.
 */
-router.post("/tickets", validateCreateTicket, postTicket);
+router.post("/tickets", authenticate, validateCreateTicket, postTicket);
 
 /**
  * @openapi
@@ -190,7 +192,7 @@ router.post("/tickets", validateCreateTicket, postTicket);
  *      404:
  *        description: Ticket not found.
  */
-router.patch("/tickets/:id/status", patchTicketStatusMiddleware, patchTicketStatus);
+router.patch("/tickets/:id/status", authenticate, authorizeRoles("teacher", "support"), patchTicketStatusMiddleware, patchTicketStatus);
 
 /**
  * @openapi
@@ -231,7 +233,7 @@ router.patch("/tickets/:id/status", patchTicketStatusMiddleware, patchTicketStat
  *       404:
  *         description: Ticket not found.
  */
-router.post("/tickets/:id/comments", validateCreateComment, postTicketComment);
+router.post("/tickets/:id/comments", authenticate, validateCreateComment, postTicketComment);
 
 
 export default router;
