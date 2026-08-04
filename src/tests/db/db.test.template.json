@@ -20,6 +20,13 @@
       "email": "carla.suporte@example.com",
       "role": "support",
       "password": "suporte123"
+    },
+    {
+      "id": "user_test",
+      "name": "test",
+      "email": "user_test@example.com",
+      "role": "support",
+      "password": "123456"
     }
   ],
   "tickets": [

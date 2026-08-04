@@ -15,8 +15,9 @@ describe("post /tickets/:id/comments Route", () => {
 
         // Act
         const response = await request(app)
-            .post(`/api/tickets/${ticketId}/comments`)
-            .send(newComment);
+            .post(`/api/tickets/${ticketId}/comments`).set("X-User-Id", "user_ana")
+            .set("X-Password", "123456").
+            send(newComment);
 
         const database = DatabaseManager.getInstance().readDatabase();
         const createdComment = database.comments.find(
@@ -51,6 +52,8 @@ describe("post /tickets/:id/comments Route", () => {
         // Act
         const response = await request(app)
             .post(`/api/tickets/${ticketId}/comments`)
+            .set("X-User-Id", "user_ana")
+            .set("X-Password", "123456")
             .send(newComment);
 
         // Assert
@@ -70,6 +73,8 @@ describe("post /tickets/:id/comments Route", () => {
         // Act
         const response = await request(app)
             .post(`/api/tickets/${ticketId}/comments`)
+            .set("X-User-Id", "user_ana")
+            .set("X-Password", "123456")
             .send(newComment);
 
         // Assert
@@ -89,6 +94,8 @@ describe("post /tickets/:id/comments Route", () => {
         // Act
         const response = await request(app)
             .post(`/api/tickets/${ticketId}/comments`)
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
             .send(newComment);
 
         // Assert

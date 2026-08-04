@@ -14,7 +14,12 @@ describe("post /tickets Route", () => {
         };
 
         // Act
-        const response = await request(app).post("/api/tickets").send(newTicket);
+        const response = await request(app).
+            post("/api/tickets")
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
+            .send(newTicket);
+
         const database = DatabaseManager.getInstance().readDatabase();
         const createdTicket = database.tickets.find((ticket) => ticket.title === newTicket.title);
 
@@ -48,7 +53,11 @@ describe("post /tickets Route", () => {
         };
 
         // Act
-        const response = await request(app).post("/api/tickets").send(newTicket);
+        const response = await request(app)
+            .post("/api/tickets")
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
+            .send(newTicket);
 
         // Assert
         expect(response.status).toBe(400);
@@ -68,7 +77,11 @@ describe("post /tickets Route", () => {
         };
 
         // Act
-        const response = await request(app).post("/api/tickets").send(newTicket);
+        const response = await request(app).
+            post("/api/tickets").
+            set("X-User-Id", "user_test").
+            set("X-Password", "123456").
+            send(newTicket);
 
         // Assert
         expect(response.status).toBe(400);
@@ -88,7 +101,11 @@ describe("post /tickets Route", () => {
         };
 
         // Act
-        const response = await request(app).post("/api/tickets").send(newTicket);
+        const response = await request(app).
+            post("/api/tickets").
+            set("X-User-Id", "user_test").
+            set("X-Password", "123456").
+            send(newTicket);
 
         // Assert
         expect(response.status).toBe(400);
@@ -107,8 +124,13 @@ describe("post /tickets Route", () => {
             category: "academico",
         };
 
+
         // Act
-        const response = await request(app).post("/api/tickets").send(newTicket);
+        const response = await request(app)
+            .post("/api/tickets")
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
+            .send(newTicket);
 
         // Assert
         expect(response.status).toBe(400);
@@ -129,7 +151,11 @@ describe("post /tickets Route", () => {
         };
 
         // Act
-        const response = await request(app).post("/api/tickets").send(newTicket);
+        const response = await request(app)
+            .post("/api/tickets")
+            .set("X-User-Id", "user_ana")
+            .set("X-Password", "123456")
+            .send(newTicket);
 
         // Assert
         expect(response.status).toBe(400);

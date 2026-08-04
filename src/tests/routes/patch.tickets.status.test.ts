@@ -14,6 +14,8 @@ describe("patch /tickets/:id/status Route", () => {
         // Act
         const response = await request(app)
             .patch(`/api/tickets/${ticketId}/status`)
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
             .send({ status, authorId, comment });
 
         const database = DatabaseManager.getInstance().readDatabase();
@@ -47,6 +49,8 @@ describe("patch /tickets/:id/status Route", () => {
         // Act
         const response = await request(app)
             .patch(`/api/tickets/${ticketId}/status`)
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
             .send({ status, authorId, comment });
 
         // Assert
@@ -66,6 +70,8 @@ describe("patch /tickets/:id/status Route", () => {
         // Act
         const response = await request(app)
             .patch(`/api/tickets/${ticketId}/status`)
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
             .send({ status, authorId, comment });
 
         // Assert
@@ -85,6 +91,8 @@ describe("patch /tickets/:id/status Route", () => {
         // Act
         const response = await request(app)
             .patch(`/api/tickets/${ticketId}/status`)
+            .set("X-User-Id", "user_test")
+            .set("X-Password", "123456")
             .send({ status, authorId });
 
         // Assert
