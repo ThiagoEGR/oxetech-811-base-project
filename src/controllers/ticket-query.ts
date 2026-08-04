@@ -10,7 +10,7 @@ export function getAllUsers(request: any, response: any) {
     response.json(users);
 }
 
-export function getAllTickets(request: any, response: any) {
+export function getTickets(request: any, response: any) {
     const result = TicketQuery.getTickets(request.query.status, request.query.category, request.query.search);
     response.json(result);
 }

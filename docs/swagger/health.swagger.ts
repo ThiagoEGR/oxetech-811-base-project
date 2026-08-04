@@ -2,11 +2,10 @@
  * @openapi
  * /api/health:
  *   get:
- *     summary: Check API health
- *     description: Returns the API status.
+ *     summary: Retorna o status de disponibilidade da API.
  *     tags:
  *       - Health
  *     responses:
  *       200:
- *         description: API is running successfully.
+ *         description: A API está funcionando corretamente.
  */

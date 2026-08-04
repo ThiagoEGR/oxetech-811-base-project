@@ -1,12 +1,18 @@
+
 /**
  * @openapi
  * /api/users:
  *   get:
- *     summary: Get all users
- *     description: Returns a list of all users.
- *     tags:
- *       - Users
+ *     summary: Retorna a lista de todos os usuários.
+ *     security:
+ *       - userAuthentication: []
+ *         passwordAuthentication: []
  *     responses:
  *       200:
- *         description: A list of users.
+ *         description: Retorna a lista de todos os usuários.
+ *       401:
+ *         description: Usuário ou senha inválidos.
+ *     tags:
+ *       - Usuários
+ * 
  */

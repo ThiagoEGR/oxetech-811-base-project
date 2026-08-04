@@ -2,34 +2,33 @@
  * @openapi
  * /api/tickets:
  *   get:
- *     summary: Get a list of tickets
- *     description: Returns a list of tickets.
+ *     summary: Retorna uma lista de tickets de acordo com os filtros informados.
  *     tags:
  *       - Tickets
  *     parameters:
  *       - name: status
  *         in: query
- *         description: Filter tickets by status (open, in_progress, resolved, closed)
+ *         description: Filtra tickets por status (open, in_progress, resolved, closed)
  *         required: false
  *         schema:
  *           type: string
  *           enum: [open, in_progress, resolved, closed]
  *       - name: category
  *         in: query
- *         description: Filter tickets by category (academico, infra, sistemas)
+ *         description: Filtra tickets por categoria (academico, infra, sistemas)
  *         required: false
  *         schema:
  *           type: string
  *           enum: [academico, infra, sistemas]
  *       - name: search
  *         in: query
- *         description: Search tickets by a word in the title, description or category
+ *         description: Busca tickets por uma palavra no título, descrição ou categoria
  *         required: false
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: A list of tickets.
+ *         description: Retorna uma lista de tickets de acordo com os filtros informados.
  */
 
 
@@ -37,43 +36,43 @@
  * @openapi
  * /api/tickets/summary:
  *   get:
- *     summary: Get ticket summary
- *     description: Returns a summary of tickets.
+ *     summary: Retorna um resumo dos tickets.
  *     tags:
  *       - Tickets
  *     responses:
  *       200:
- *         description: A summary of tickets.
+ *         description: Retorna um resumo dos tickets.
  */
 
 /**
  * @openapi
  * /api/tickets/{id}:
  *   get:
- *     summary: Get a ticket by ID
- *     description: Returns a ticket with requester, assigned user and comments.
+ *     summary: Retorna um ticket pelo ID, incluindo informações do solicitante, usuário atribuído e comentários.
  *     tags:
  *       - Tickets
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: Ticket identifier
+ *         description: Id do ticket
  *         schema:
  *           type: string
  *     responses:
  *       200:
- *         description: Ticket found.
+ *         description: Ticket encontrado.
  *       404:
- *         description: Ticket not found.
+ *         description: Ticket não encontrado.
  */
 
 /** 
  * @openapi
  * /api/tickets:
  *   post:
- *     summary: Create a new ticket
- *     description: Creates a new ticket with the provided information.
+ *     summary: Cria um novo ticket com as informações fornecidas.
+ *     security:
+ *       - userAuthentication: []
+ *         passwordAuthentication: []
  *     tags:
  *       - Tickets
  *     requestBody:
@@ -85,20 +84,20 @@
  *             properties:
  *               title:
  *                 type: string
- *                 description: The title of the ticket.
+ *                 description: O título do ticket.
  *               description:
  *                 type: string
- *                 description: The detailed description of the ticket.
+ *                 description: A descrição detalhada do ticket.
  *               category:
  *                 type: string
  *                 enum: [academico, infra, sistemas]
- *                 description: The category of the ticket.
+ *                 description: A categoria do ticket.
  *               requesterId:
  *                 type: string
- *                 description: The ID of the user requesting the ticket.
+ *                 description: O ID do usuário que está solicitando o ticket.
  *               assignedToId:
  *                 type: string
- *                 description: The ID of the user assigned to the ticket (optional).
+ *                 description: O ID do usuário atribuído ao ticket (opcional).
  *           required:
  *              - title
  *              - description
@@ -106,24 +105,30 @@
  *              - requesterId
  *     responses:
  *       201:
- *         description: Ticket created successfully.
+ *         description: Ticket criado com sucesso.
+ *       401:
+ *         description: Usuário ou senha inválido.
  *       400:
- *         description: Bad request. Missing or invalid fields.
-*/
+ *         description: Requisição inválida. Um ou mais campos estão ausentes ou são inválidos. 
+ */
+
 
 /**
  * @openapi
  * /api/tickets/{id}/status:
  *  patch:
- *    summary: Update ticket status
- *    description: Updates the status of a ticket.
+ *    summary: Atualiza o status de um ticket.
+ *    description: Apenas usuários com a role 'teacher' ou 'support' podem acessar este endpoint.
+ *    security:
+ *      - userAuthentication: []
+ *        passwordAuthentication: []
  *    tags:
  *      - Tickets
  *    parameters:
  *      - name: id
  *        in: path
  *        required: true
- *        description: Ticket identifier
+ *        description: Idenrificador do ticket a ser atualizado.
  *        schema:
  *          type: string
  *    requestBody:
@@ -136,17 +141,21 @@
  *              status:
  *                type: string
  *                enum: [open, in_progress, resolved, closed]
- *                description: The new status of the ticket.
+ *                description: O novo status do ticket.
  *              comment:
  *                type: string
- *                description: Required when closing a ticket. A comment explaining the reason for closing the ticket.
+ *                description: Um comentário explicando a mudança de status (necessário se o status for alterado para "closed").
  *          required:
  *            - status
  *    responses:
  *      200:
- *        description: Ticket status updated successfully.
+ *        description: O status do ticket foi atualizado com sucesso.
+ *      401:
+ *        description: Usuário ou senha inválido.
+ *      403:
+ *        description: Acesso negado. O usuário não tem permissão para atualizar o status do ticket.
  *      400:
- *        description: Bad request. Missing or invalid fields.
+ *        description: Requisição inválida. Um ou mais campos estão ausentes ou são inválidos.
  *      404:
- *        description: Ticket not found.
+ *        description: Ticket não encontrado.
  */

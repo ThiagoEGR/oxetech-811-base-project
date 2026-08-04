@@ -7,7 +7,24 @@ const options: swaggerJsdoc.Options = {
             title: "Ticket API",
             version: "1.0.0",
         },
+
+        components: {
+            securitySchemes: {
+                userAuthentication: {
+                    type: "apiKey",
+                    in: "header",
+                    name: "X-User-Id",
+                },
+                passwordAuthentication: {
+                    type: "apiKey",
+                    in: "header",
+                    name: "X-Password",
+                },
+            },
+        },
+
     },
+
     apis: process.env.NODE_ENV === "production"
         ? ["./dist/docs/swagger/**/*.js"]
         : ["./docs/swagger/**/*.ts"],

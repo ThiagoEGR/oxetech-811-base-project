@@ -2,15 +2,17 @@
  * @openapi
  * /api/tickets/{id}/comments:
  *   post:
- *     summary: Add a comment to a ticket
- *     description: Adds a new comment to an existing ticket.
+ *     summary: Adiciona um novo comentário a um ticket existente.
+ *     security:
+ *       - userAuthentication: []
+ *         passwordAuthentication: []
  *     tags:
  *       - Tickets
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: Ticket identifier
+ *         description: Id do ticket
  *         schema:
  *           type: string
  *     requestBody:
@@ -22,18 +24,20 @@
  *             properties:
  *               authorId:
  *                 type: string
- *                 description: Identifier of the comment author.
+ *                 description: Id do autor do comentário.
  *               message:
  *                 type: string
- *                 description: Comment text.
+ *                 description: Conteúdo do comentário.
  *             required:
  *               - authorId
  *               - message
  *     responses:
  *       201:
- *         description: Comment added successfully.
+ *         description: Comentário adicionado com sucesso.
  *       400:
- *         description: Invalid request.
+ *         description: Requisição inválida. Um ou mais campos estão ausentes ou são inválidos.
+ *       401:
+ *         description: Usuário ou senha inválidos.
  *       404:
- *         description: Ticket not found.
+ *         description: Ticket não encontrado.
  */
