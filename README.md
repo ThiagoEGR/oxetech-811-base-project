@@ -123,7 +123,7 @@ A API possui documentação interativa gerada com Swagger e permite:
 - testar requisições diretamente pelo navegador;
 - consultar parâmetros, request bodies e respostas da API
 
-![Swagger](docs/swagger.png)
+![Swagger](docs/swagger-v2.png)
 
 ## Scripts
 
