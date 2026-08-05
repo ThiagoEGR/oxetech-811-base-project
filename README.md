@@ -1,50 +1,113 @@
 # Oxetech Helpdesk API
 
-Esta e uma codebase-base para exercicios de refatoracao incremental. O projeto simula uma API simples de chamados de suporte academico.
-
-O objetivo nao e reconstruir o sistema do zero. O objetivo e entender a aplicacao existente, identificar problemas tecnicos, fazer melhorias pequenas e justificar as decisoes por Pull Request.
+Esta é uma API REST para gerenciamento de chamados de suporte acadêmico, desenvolvida como parte do projeto da disciplina Engenharia de software da Oxetech Academy.  Ao longo do curso, a aplicação foi evoluída por meio de refatorações incrementais, melhorias na organização do código, implementação de testes automatizados e de integração, documentação da API e outras práticas de desenvolvimento de software. 
 
 ## Requisitos
+
+### Execução local
 
 - Node.js 20 ou superior
 - npm
 
+### Execução com Docker
+
+- Docker
+
 ## Tecnologias
 
+- Node.js
 - TypeScript
 - Express
 - Jest
+- Docker
 - Swagger (OpenAPI)
+
+## Estrutura do projeto 
+
+src/
+├── controllers/
+├── middlewares/
+├── routes/
+├── services/
+├── swagger/
+├── tests/
+├── app.ts
+└── server.ts
+
+- **controllers/**: recebem as requisições HTTP e retornam as respostas.
+- **middlewares/**: implementam funcionalidades compartilhadas, como autenticação, autorização e validação de dados de entrada.
+- **routes/**: definem os endpoints da API.
+- **services/**: concentram a lógica de negócio da aplicação.
+- **swagger/**: contém a configuração do Swagger e a documentação dos endpoints da API.
+- **tests/**: contêm os testes automatizados e de integração.
 
 ## Funcionalidades
 
-- Criar chamados
-- Listar chamados 
-- Buscar chamado por ID
-- Alterar status 
-- Adicionar comentários
+A API disponibiliza funcionalidades para gerenciamento de chamados de suporte acadêmico, incluindo:
+- Gerenciamento de chamados de suporte acadêmico.
+- Consulta de usuários cadastrados.
+- Cadastro, consulta e atualização de chamados.
+- Filtragem de chamados por critérios específicos.
+- Validação dos dados recebidos nas requisições.
+- Autenticação e autorização por níveis de acesso.
+- Documentação interativa da API com Swagger.
+- Endpoint para verificação da saúde da aplicação (Health Check).
 
-## Como rodar
+## Testes
 
-Instale as dependencias:
+Para executar os testes automatizados e de integrações das principais rotas:
+
+```bash
+npm test
+```
+
+### Execução Local
+
+Instale as dependências:
 
 ```bash
 npm install
 ```
 
-Reinicie os dados de exemplo, se necessario:
+Recrie os dados de exemplo, se necessário:
 
 ```bash
 npm run seed
 ```
 
-Execute em modo desenvolvimento:
+Inicie a aplicação:
 
 ```bash
 npm run dev
 ```
 
-A API ficara disponivel em `http://localhost:3000/api`.
+A API ficará disponível em:
+
+```
+http://localhost:3000/api
+```
+
+### Execução com Docker
+
+Construa a imagem:
+
+```bash
+docker build -t oxetech-helpdesk-api .
+```
+
+Execute o contêiner:
+
+```bash
+docker run -p 3000:3000 oxetech-helpdesk-api
+```
+
+A API ficará disponível em:
+
+```
+http://localhost:3000/api
+```
+
+
 
 ## Documentação da API
 
@@ -62,22 +125,11 @@ A API possui documentação interativa gerada com Swagger e permite:
 
 ![Swagger](docs/swagger.png)
 
-## Arquitetura
-
-O projeto está organizado nas seguintes camadas:
-
-- **Routes:** definição das rotas da API.
-- **Controllers:** tratamento das requisições HTTP.
-- **Services:** implementação das regras de negócio.
-- **Middleware:** validação das entradas da API.
-- **Factory:** criação de objetos Ticket.
-- **DatabaseManager:** acesso ao banco de dados em JSON.
-
 ## Scripts
 
-- `npm run dev`: executa a API em modo desenvolvimento.
-- `npm run seed`: recria o arquivo de dados inicial.
-- `npm run typecheck`: valida os tipos TypeScript.
-- `npm run build`: compila o projeto para `dist`.
-- `npm test`: Executa os testes de integração implementados para validar os principais fluxos da API.
+- `npm run dev`: inicia a aplicação em modo de desenvolvimento.
+- `npm run seed`: recria os dados iniciais.
+- `npm run typecheck`: verifica os tipos TypeScript.
+- `npm run build`: compila a aplicação para `dist`.
+- `npm test`: executa os testes automatizados e de integração.
 

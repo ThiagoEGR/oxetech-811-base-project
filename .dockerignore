@@ -13,6 +13,7 @@ coverage
 .vscode
 .idea
 
+docs
 
 Dockerfile
 docker-compose.yml
